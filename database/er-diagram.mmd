@@ -1,0 +1,38 @@
+erDiagram
+    USERS {
+        int id PK
+        varchar fullName
+        varchar email UK
+        varchar password
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    PROJECTS {
+        int id PK
+        int userId FK
+        varchar name
+        text description
+        enum status
+        date startDate
+        date endDate
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    TASKS {
+        int id PK
+        int projectId FK
+        int userId FK
+        varchar name
+        text description
+        enum priority
+        enum status
+        date dueDate
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    USERS ||--o{ PROJECTS : "owns"
+    USERS ||--o{ TASKS : "owns"
+    PROJECTS ||--o{ TASKS : "contains"
